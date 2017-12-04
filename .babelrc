@@ -1,0 +1,15 @@
+{
+    "presets": [
+      ["env", {
+        "targets": {
+          "browsers": ["last 1 versions", "safari >= 7"]
+        },
+        "modules": false,
+        "debug": true
+      }],
+      "react"
+    ],
+    "plugins": [
+      ["transform-object-rest-spread", { "useBuiltIns": true }]
+    ]
+  }
