@@ -21,7 +21,7 @@ export default class Checkboxes extends Component {
         } else {
             this.selectedTypes.add(row);
         }
-        this.props.onSelected(this.selectedTypes);
+        this.props.onSelected([...this.selectedTypes]);
     }
 
     renderRow(row) {

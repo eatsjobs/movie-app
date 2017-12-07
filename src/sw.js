@@ -1,5 +1,5 @@
 // TODO: Replace Xs.
-importScripts('/importScripts/workbox-sw.prod.v2.1.2.js');
+importScripts('workbox-sw.prod.workbox-sw.prod.v2.1.2.js');
 
 // Note: Ignore the error that Glitch raises about WorkboxSW being undefined.
 const workbox = new WorkboxSW({
@@ -11,11 +11,6 @@ const workbox = new WorkboxSW({
 workbox.router.registerRoute(
   new RegExp('^https://hacker-news.firebaseio.com'),
   workbox.strategies.staleWhileRevalidate()
-);
-
-workbox.router.registerRoute(
-    '/\.css$/', 
-    workbox.strategies.cacheFirst()
 );
 
 self.addEventListener('push', (event) => {

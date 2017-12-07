@@ -1,12 +1,13 @@
+const workboxPlugin = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const common = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const common = require('./webpack.common.js');
 //const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const workboxPlugin = require('workbox-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = function(env){
   let PUBLIC_PATH = '/';
@@ -50,10 +51,10 @@ module.exports = function(env){
         sourceMap: true
       }),
       new WebpackPwaManifest({
-        name: 'My Progressive Web App',
-        short_name: 'MyPWA',
+        name: 'Movie Suggest',
+        short_name: 'Movie Suggest',
         display: 'standalone',
-        description: 'My awesome Progressive Web App!',
+        description: 'Movie Suggest',
         background_color: '#ffffff',
         start_url: 'index.html?utm_source=homescreen',
         icons: [
@@ -66,7 +67,11 @@ module.exports = function(env){
             size: '1024x1024' // you can also use the specifications pattern
           }
         ]
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from:'node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js', to: path.resolve(__dirname, outputPath) },
+        { from:'node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js.map', to: path.resolve(__dirname, outputPath) }
+      ])
     ]
   })
 }

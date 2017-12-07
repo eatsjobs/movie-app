@@ -19,13 +19,18 @@ import SelectDurationRange from '../components/SelectDurationRange.jsx';
 import SelectYearsRange from '../components/SelectYearsRange.jsx';
 import Checkboxes from '../components/Checkboxes.jsx';
 import SortBy from '../components/SortBy.jsx';
+import MovieList from '../components/MovieList.jsx';
 
 import api from '../api/api';
+const paddingBottom = {
+    paddingBottom: '50px'
+}
 
 export default class Home extends Component {
     constructor(){
         super(...arguments);
         this.getMovies = this.getMovies.bind(this);
+        this.handleNext = this.handleNext.bind(this);        
         this.handleChange = this.handleChange.bind(this);      
         this.onTypeSelection = this.onTypeSelection.bind(this);
         this.onYearsSelected = this.onYearsSelected.bind(this);
@@ -62,9 +67,7 @@ export default class Home extends Component {
                     movies: data.results 
                 });
             }).catch(reason => {
-                this.setState({
-                    isFetching: false,                    
-                });
+                this.setState({ isFetching: false });
             });
     }
 
@@ -77,12 +80,16 @@ export default class Home extends Component {
     }
 
     handleChange(e) {
-        this.setState({ carouselIndex: e.activeIndex });
+        //this.setState({ carouselIndex: e.activeIndex });
     }
 
-    onGenresSelected(_genres) {
-        let genres = [..._genres];
-        
+    handleNext() {        
+        this.setState({ carouselIndex: this.state.carouselIndex + 1 }, () => {
+            if (this.state.carouselIndex === 3) { this.getMovies(); }
+        });
+    }
+
+    onGenresSelected(genres) {
         const genresIds = genres.map(genre => this.state.genresMap[genre]);
         const newQuery = Object.assign({}, this.state.query, { selectedGenres: genresIds });        
         this.setState({ query:  newQuery });
@@ -102,14 +109,21 @@ export default class Home extends Component {
         const newQuery = Object.assign({}, this.state.query, { selectedDurationRange });
         this.setState({ query: newQuery });
     }
-
+    
     render() {
+        const { innerHeight } = window;
+        const carouselHeight = innerHeight - 44;
+        let carouselStyle = { height: `${carouselHeight}px` };
+
+        if(this.state.carouselIndex === 1 || this.state.carouselIndex === 2) { 
+            carouselStyle = Object.assign({}, paddingBottom, carouselStyle);
+        } else {
+            carouselStyle = paddingBottom;
+        }
+
         return (
             <Page renderToolbar={this.renderToolbar}>                    
-                <Carousel onPostChange={this.handleChange} index={this.state.carouselIndex} overscrollable swipeable autoScroll>
-                    <CarouselItem>
-                        <RadioSelect choices={['Film', 'Tv']} title={'Choose the type: Series or Movie'} onSelected={this.onTypeSelection} />
-                    </CarouselItem>
+                <Carousel onPostChange={this.handleChange} index={this.state.carouselIndex} overscrollable autoScroll centered style={carouselStyle}>
                     <CarouselItem>
                         <Checkboxes data={Object.keys(this.state.genresMap)} title={'Choose the genres'} onSelected={this.onGenresSelected} />
                     </CarouselItem>
@@ -120,19 +134,25 @@ export default class Home extends Component {
                         <SelectDurationRange onSelected={this.onDurationSelected} />
                     </CarouselItem>
                     <CarouselItem>
-                        {"Results"}
-                    </CarouselItem>
-                </Carousel>                
+                        <MovieList movies={this.state.movies} config={this.state.config} />
+                    </CarouselItem>                    
+                </Carousel>
+                <div style={{ display: 'flex', flexDirection: 'row', position: 'fixed', bottom:'0', width: '100%' }}>                    
+                    <div style={{ margin: '6px', width: '100%'}}>
+                        <Button modifier='large' disabled={ this.state.carouselIndex === 3 } onClick={this.handleNext}>Next</Button>
+                    </div>
+                </div>
             </Page>       
         );
     }
 }
 /*
 <div style={{ display: 'flex', flexDirection: 'row', position: 'fixed', bottom:'0', width: '100%' }}>
-                    <div style={{ margin: '6px', width: '50%' }}>
-                        <Button modifier='large' disabled={ this.state.carouselIndex === 0 } onClick={this.handlePrev}>Prev</Button>                    
-                    </div>
-                    <div style={{ margin: '6px', width: '50%'}}>
-                        <Button modifier='large' disabled={ this.state.carouselIndex === 4 } onClick={this.handleNext}>Next</Button>
-                    </div>
-                </div>*/
+    <div style={{ margin: '6px', width: '50%' }}>
+        <Button modifier='large' disabled={ this.state.carouselIndex === 0 } onClick={this.handlePrev}>Prev</Button>                    
+    </div>
+    <div style={{ margin: '6px', width: '50%'}}>
+        <Button modifier='large' disabled={ this.state.carouselIndex === 4 } onClick={this.handleNext}>Next</Button>
+    </div>
+</div>
+*/
