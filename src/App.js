@@ -12,13 +12,13 @@ import Home from './containers/Home.jsx';
  * the corresponding page.
  */
 const renderPage = (route, navigator) => (
-  <route.component key={route.key} navigator={navigator} />
+  <route.component key={route.key} navigator={navigator} hasBackButton={route.hasBackButton} />
 );
 
 const App = () => (
   <Navigator
     renderPage={renderPage}
-    initialRoute={{ component: Home, key: 'MAIN_PAGE' }}
+    initialRoute={{ component: Home, key: 'MAIN_PAGE', hasBackButton: false }}
   />
 );
 

@@ -51,6 +51,7 @@ export class Home extends Component {
         this.setState({ carouselIndex: this.state.carouselIndex + 1 });
     }
 
+    /** these functions will be actions */
     onGenresSelected(genres) {
         const genresIds = genres.map(genre => this.props.genresMap[genre]);
         const newQuery = Object.assign({}, this.state.query, { selectedGenres: genresIds });        
@@ -75,10 +76,20 @@ export class Home extends Component {
     getMovies() {
         const { navigator } = this.props;
         this.props.actions.getMovies(this.state.query);
-        navigator.pushPage(
-            { component: MovieList, key: 'MOVIES_PAGE' }
+        navigator.pushPage({ 
+                component: MovieList,
+                key: 'MOVIES_PAGE',
+                hasBackButton: true 
+            },
+            navigator
         );
-        // this.setState({ carouselIndex: 0 });
+        /** TODO:
+         * maybe it's better to remove the carousel
+         * and put the onsen Pages with the navigator
+         */
+        setTimeout(() => {
+            this.setState({ carouselIndex: 0 });
+        }, 1000)
     }
 
     renderToolbar() {
