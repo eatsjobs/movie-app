@@ -1,16 +1,21 @@
 import api from '../api';
 
 export const GET_CONFIG = 'GET_CONFIG';
+export const GET_CONFIG_SUCCESS = 'GET_CONFIG_SUCCESS';
+
 export const GET_GENRES = 'GET_GENRES';
+export const GET_GENRES_SUCCESS = 'GET_GENRES_SUCCESS';
+
 export const GET_MOVIES = 'GET_MOVIES';
 export const GET_MOVIES_SUCCESS = 'GET_MOVIES_SUCCESS';
 export const GET_MOVIES_ERROR = 'GET_MOVIES_ERROR';
+
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export function receivedConfig(config) {
     return {
         payload: config,
-        type: GET_CONFIG
+        type: GET_CONFIG_SUCCESS
     }
 }
 
@@ -24,7 +29,7 @@ export function setLanguage(language) {
 export function receivedGenres(genres) {
     return {
         payload: genres,
-        type: GET_GENRES
+        type: GET_GENRES_SUCCESS
     }
 }
 
