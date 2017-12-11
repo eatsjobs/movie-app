@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createSliderWithTooltip } from 'rc-slider';
 import Range from 'rc-slider/lib/Range';
 import 'rc-slider/assets/index.css';
-import { denormalize } from '../lib/utils'
+import { denormalize, normalize } from '../lib/utils'
 const ToolTipRange = createSliderWithTooltip(Range);
 
 export class SelectDurationRange extends Component {
@@ -10,7 +10,7 @@ export class SelectDurationRange extends Component {
         super(props);
         this.onAfterChange = this.onAfterChange.bind(this);
         const minDuration = 0;
-        const maxDuration = 180;
+        const maxDuration = 60 * 4;
         this.state = {
             value: [ minDuration, maxDuration ],
             minDuration,
