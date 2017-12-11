@@ -1,9 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import {
+  Navigator
+} from 'react-onsenui';
+
 import Home from './containers/Home.jsx';
 
-export default class App extends Component {
+/**
+ * This function takes a `route` object as
+ * an argument and uses it to render
+ * the corresponding page.
+ */
+const renderPage = (route, navigator) => (
+  <route.component key={route.key} navigator={navigator} />
+);
 
-    render(){
-        return (<Home />)
-    }
-}
+const App = () => (
+  <Navigator
+    renderPage={renderPage}
+    initialRoute={{ component: Home, key: 'MAIN_PAGE' }}
+  />
+);
+
+export default App;

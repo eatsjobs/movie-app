@@ -38,7 +38,18 @@ async function getGenresMap(query) {
     return responseParsed.genres.reduce((accumulator, current) => { accumulator[current.name] = current.id; return accumulator; }, {});
 }
 
+async function getLanguage() {
+    try {
+        const data = await fetch('//httpbin.org/headers').then(_ => _.json());
+        const language = data.headers['Accept-Language'].split(',')[0];
+        return language;
+    } catch(e) {
+        return navigator.language;
+    }
+}
+
 export default {
+    getLanguage,
     getConfig,
     getGenresMap,
     discover,

@@ -19,6 +19,7 @@ const PLATFORM_IOS = './platforms/ios/www';
   return merge(common, {
     devtool: 'inline-source-map',
     devServer: {
+      historyApiFallback: true,
       contentBase: contentBase,
       host: '0.0.0.0' // needed to be served from your ip
     },
