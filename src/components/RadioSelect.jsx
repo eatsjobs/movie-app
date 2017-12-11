@@ -11,6 +11,7 @@ export class RadioSelect extends Component {
         super(props);
         this.handleSelection = this.handleSelection.bind(this);
         this.renderRadioRow = this.renderRadioRow.bind(this);
+        this.renderHeader = this.renderHeader.bind(this);
         this.state = {            
             selected: this.props.choices[0]
         }
@@ -44,14 +45,18 @@ export class RadioSelect extends Component {
         </ListItem>);
     }
 
+    renderHeader() {
+        return (<ListHeader>{this.props.title}</ListHeader>);
+    }
+
     render() { 
         return (
         <div>
             <List
                 dataSource={this.props.choices}
-                renderHeader={() => <ListHeader>{this.props.title}</ListHeader>}
+                renderHeader={this.renderHeader}
                 renderRow={this.renderRadioRow}
-            />           
+            />
         </div>)
     }
 }
