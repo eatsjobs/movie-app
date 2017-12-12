@@ -10,7 +10,8 @@ const common = require('./webpack.common.js');
 //const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = function(env){
-  let PUBLIC_PATH = '/';
+  let PUBLIC_PATH = process.env.ASSETS_PATH || '/';
+  console.log(PUBLIC_PATH);
   const HYBRID_FOLDER = './www';
   let outputPath = './dist';
   // hybrid served from www
