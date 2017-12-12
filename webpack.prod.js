@@ -38,17 +38,20 @@ module.exports = function(env){
       }),
       // pass this in the global scope
       new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         __ENV__: JSON.stringify('production'),
         APP_ENV: JSON.stringify(env.APP_ENV),
       }),
       new workboxPlugin({
         globDirectory: outputPath,
-        globPatterns: ['**/*.{html,js,png}'],
+        globPatterns: ['**/*.{html,js,png,eot,ttf,woff,woff2,svg}'],
         swSrc: './src/sw.js',
         swDest: path.join(outputPath, 'sw.js')        
       }),
       new UglifyJSPlugin({
-        sourceMap: true
+        minimize: true,
+        sourceMap: true,
+        comments: false
       }),
       new WebpackPwaManifest({
         name: 'Movie Suggest',

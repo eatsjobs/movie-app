@@ -1,17 +1,17 @@
 {
   "homepage": "https://eatsjobs.github.io/movie-app/",
   "name": "org.apache.cordova.sampleapp",
-  "displayName": "sample-app",
+  "displayName": "movie-app",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.APP_ENV=web --open --config webpack.dev.js",
     "start:hybrid": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=android --config webpack.dev.js",
-    "build": "webpack --env.APP_ENV=web --config webpack.prod.js",
+    "build": "export NODE_ENV=production && webpack --env.APP_ENV=web --config webpack.prod.js",
     "build:dev": "webpack --env.APP_ENV=web --config webpack.dev.js",
     "build:dev:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.dev.js",
-    "build:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.prod.js",
+    "build:hybrid": "export NODE_ENV=production && webpack --env.APP_ENV=hybrid --config webpack.prod.js",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "Apache Cordova Team",
