@@ -1,7 +1,6 @@
 // TODO: Replace Xs.
 importScripts('workbox-sw.prod.v2.1.2.js');
 
-// Note: Ignore the error that Glitch raises about WorkboxSW being undefined.
 const workbox = new WorkboxSW({
   skipWaiting: true,
   clientsClaim: true
@@ -10,6 +9,18 @@ const workbox = new WorkboxSW({
 workbox.router.registerRoute(
   new RegExp('^https://api.themoviedb.org/3'),
   workbox.strategies.staleWhileRevalidate()
+);
+
+workbox.router.registerRoute(
+  /^https?:\/\/image\.tmdb\.org/,
+  workbox.strategies.cacheFirst({
+    cacheName: 'image-cache'
+  })
+);
+
+workbox.router.registerRoute(
+  /^https?:\/\/httpbin\.org\/headers/,
+  workbox.strategies.cacheFirst()
 );
 
 self.addEventListener('push', (event) => {
