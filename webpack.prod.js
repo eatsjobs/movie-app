@@ -9,6 +9,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
 //const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
+const APP_NAME = 'Movie Suggest';
+
 module.exports = function(env){
   let PUBLIC_PATH = process.env.ASSETS_PATH || '/';
   console.log(PUBLIC_PATH);
@@ -29,7 +31,7 @@ module.exports = function(env){
     devtool: 'source-map',
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Test',
+        title: APP_NAME,
         filename: 'index.html',
         APP_ENV: env.APP_ENV,
         template: './src/index.template.html',
@@ -55,10 +57,10 @@ module.exports = function(env){
         comments: false
       }),
       new WebpackPwaManifest({
-        name: 'Movie Suggest',
-        short_name: 'Movie Suggest',
+        name: APP_NAME,
+        short_name: APP_NAME,
         display: 'standalone',
-        description: 'Movie Suggest',
+        description: APP_NAME,
         background_color: '#ffffff',
         start_url: 'index.html?utm_source=homescreen',
         icons: [
