@@ -115,7 +115,7 @@ workbox.precache([
   },
   {
     "url": "/movie-app/index.html",
-    "revision": "a3da2db0e9be80e8f31d87c41608bef4"
+    "revision": "8c1ff0e75e15db181ee0921ed7065371"
   },
   {
     "url": "/movie-app/vendor.4af73.bundle.js",
