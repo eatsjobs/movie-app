@@ -34,8 +34,8 @@ self.addEventListener('push', (event) => {
 
 workbox.precache([
   {
-    "url": "/movie-app/app.25639.bundle.js",
-    "revision": "8d7047ad82aa6c08e7efa43acb51f6b8"
+    "url": "/movie-app/app.4af73.bundle.js",
+    "revision": "656978330e16cdf7a18d40472da3362d"
   },
   {
     "url": "/movie-app/assets/fontawesome-webfont.eot",
@@ -86,40 +86,40 @@ workbox.precache([
     "revision": "a4d31128b633bc0b1cc1f18a34fb3851"
   },
   {
-    "url": "/movie-app/icon_1024x1024.af1892deb5e3c617c3b6b9acf03a5013.png",
-    "revision": "af1892deb5e3c617c3b6b9acf03a5013"
+    "url": "/movie-app/icon_1024x1024.85d27851778e476d73282e8b13dbc57f.png",
+    "revision": "85d27851778e476d73282e8b13dbc57f"
   },
   {
-    "url": "/movie-app/icon_128x128.e5693b6a16eac3bc695f3f69d74d364b.png",
-    "revision": "e5693b6a16eac3bc695f3f69d74d364b"
+    "url": "/movie-app/icon_128x128.c621169ce721192c44169dd190c89346.png",
+    "revision": "c621169ce721192c44169dd190c89346"
   },
   {
-    "url": "/movie-app/icon_192x192.5ebd548c21b28279ed985162c25bd757.png",
-    "revision": "5ebd548c21b28279ed985162c25bd757"
+    "url": "/movie-app/icon_192x192.e19be56f59cee3fa623a06334978b332.png",
+    "revision": "e19be56f59cee3fa623a06334978b332"
   },
   {
-    "url": "/movie-app/icon_256x256.c5501bd27aebacbcbecf5a14ce04aad5.png",
-    "revision": "c5501bd27aebacbcbecf5a14ce04aad5"
+    "url": "/movie-app/icon_256x256.915b2ea2e8c1ca9d912afffbe118e841.png",
+    "revision": "915b2ea2e8c1ca9d912afffbe118e841"
   },
   {
-    "url": "/movie-app/icon_384x384.4e0578167b09ec7162a227b4bcef8069.png",
-    "revision": "4e0578167b09ec7162a227b4bcef8069"
+    "url": "/movie-app/icon_384x384.5f1139635eddd374e50e5bd1da7d3b3b.png",
+    "revision": "5f1139635eddd374e50e5bd1da7d3b3b"
   },
   {
-    "url": "/movie-app/icon_512x512.2c2f24f2d3506892e495262784ce51ac.png",
-    "revision": "2c2f24f2d3506892e495262784ce51ac"
+    "url": "/movie-app/icon_512x512.68fc669a904882b64d63250dcb6eb93d.png",
+    "revision": "68fc669a904882b64d63250dcb6eb93d"
   },
   {
-    "url": "/movie-app/icon_96x96.b4688a0a2ebbac3362bcae2a820070fc.png",
-    "revision": "b4688a0a2ebbac3362bcae2a820070fc"
+    "url": "/movie-app/icon_96x96.9c1d958a0fc4c74214c22e590d611b7b.png",
+    "revision": "9c1d958a0fc4c74214c22e590d611b7b"
   },
   {
     "url": "/movie-app/index.html",
-    "revision": "c51b54813edfd2bd8304829c44095c11"
+    "revision": "a3da2db0e9be80e8f31d87c41608bef4"
   },
   {
-    "url": "/movie-app/vendor.25639.bundle.js",
-    "revision": "a39da6a20fdb40167d17aeff89653dbd"
+    "url": "/movie-app/vendor.4af73.bundle.js",
+    "revision": "c8b2738c1a3f23ac6fc21d33cff14d72"
   },
   {
     "url": "/movie-app/workbox-sw.prod.v2.1.2.js",

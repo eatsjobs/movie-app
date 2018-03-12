@@ -1,0 +1,47 @@
+{
+  "icons": [
+    {
+      "src": "/movie-app/icon_1024x1024.85d27851778e476d73282e8b13dbc57f.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_512x512.68fc669a904882b64d63250dcb6eb93d.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_384x384.5f1139635eddd374e50e5bd1da7d3b3b.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_256x256.915b2ea2e8c1ca9d912afffbe118e841.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_192x192.e19be56f59cee3fa623a06334978b332.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_128x128.c621169ce721192c44169dd190c89346.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/movie-app/icon_96x96.9c1d958a0fc4c74214c22e590d611b7b.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Movie Suggest",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "index.html?utm_source=homescreen",
+  "publicPath": null,
+  "short_name": "Movie Suggest",
+  "description": "Movie Suggest",
+  "background_color": "#ffffff"
+}
