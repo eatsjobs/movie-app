@@ -29,7 +29,13 @@ export class MovieList extends Component {
     }
     
     handleChange(e) {
-        this.setState({ index: e.activeIndex });
+        this.setState({ index: e.activeIndex }, () => {
+            console.log(this.props.currentPage);
+            if((this.state.index + 2) % 20 === 0) { 
+                
+                this.props.actions.getMovies(this.props.currentPage + 1);
+            }
+        });
     }
 
     renderToolbar() {
@@ -40,15 +46,15 @@ export class MovieList extends Component {
                 }
             </div>
             <div className='center'>Your Movies!</div>
-            <div className='right' style={{ paddingRight: '5px' }}>{this.state.index + 1} / {this.props.movies.length }</div>
+            <div className='right' style={{ paddingRight: '5px' }}>{this.state.index + 1} / {this.props.totalResults }</div>
         </Toolbar>);
     }
 
     render() {
         return (
             <Page renderToolbar={this.renderToolbar}>
-                <Carousel onPostChange={this.handleChange} index={this.state.index} centered swipeable autoScroll overscrollable>
-                {!this.props.isFetching ? this.props.movies.map((movie, i) => {
+                <Carousel onPostChange={this.handleChange} index={this.state.index} centered swipeable autoScroll overscrollable autoRefresh>
+                {this.props.movies.map((movie, i) => {
                     const imgURL = [this.props.config.images.secure_base_url, this.props.config.images.backdrop_sizes[0], movie.backdrop_path].join('');
                     return (
                     <CarouselItem key={`card_${i}`}>
@@ -60,7 +66,7 @@ export class MovieList extends Component {
                             </div>
                         </Card>
                     </CarouselItem>);
-                }) : <div style={{ textAlign: 'center' }}>Loading...</div>}
+                })}
                 </Carousel>
             </Page>
         )
@@ -77,7 +83,9 @@ const mapStateToProps = (state) => {
     return {
         isFetching: state.moviesReducer.isFetching,
         movies: state.moviesReducer.movies,
-        config: state.appReducer.config
+        config: state.appReducer.config,
+        totalResults: state.moviesReducer.totalResults,
+        currentPage: state.moviesReducer.page
     };
 };
   

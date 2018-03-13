@@ -11,6 +11,9 @@ export const GET_MOVIES_SUCCESS = 'GET_MOVIES_SUCCESS';
 export const GET_MOVIES_ERROR = 'GET_MOVIES_ERROR';
 
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+export const SET_YEARS_RANGE = 'SET_YEARS_RANGE';
+export const SET_SELECTED_GENRES = 'SET_SELECTED_GENRES';
+export const SET_DURATION_RANGE = 'SET_DURATION_RANGE';
 
 export function receivedConfig(config) {
     return {
@@ -64,17 +67,38 @@ export function getGenres() {
     }
 }
 
-export function getMovies(query) {
+export function getMovies(page) {
     return (dispatch, getState) => {
-        const { appReducer } = getState();
-        query.locale = appReducer.localization;
+        const { appReducer, moviesReducer } = getState();
+        const query = {...moviesReducer.query, locale: appReducer.localization, page };
         dispatch({ type: GET_MOVIES });
         return api.discover(query)
             .then(data => {
-                dispatch(receivedMovies(data.results))
+                dispatch(receivedMovies(data))
             })
             .catch(reason => {
                 dispatch({ type: GET_MOVIES_ERROR, payload: reason.toString() });
             });
+    }
+}
+
+export function setSelectedGenres(genresIDs) {
+    return {
+        type: SET_SELECTED_GENRES,
+        payload: genresIDs
+    }
+}
+
+export function setYearsRange(yearsRange) {
+    return {
+        type: SET_YEARS_RANGE,
+        payload: yearsRange
+    }
+}
+
+export function setDurationRange(durationRange) {
+    return {
+        type: SET_DURATION_RANGE,
+        payload: durationRange
     }
 }

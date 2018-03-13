@@ -37,12 +37,12 @@ export class Home extends Component {
         this.onGenresSelected = this.onGenresSelected.bind(this);
         this.getMovies = this.getMovies.bind(this);
         this.state = {
-            query: {
+            /* query: {
                 selectedGenres: [],
                 selectedDurationRange: [0, 60 * 4],
                 selectedYearsRange: [1900, new Date().getFullYear()],
                 selectedSorting: null // mostRecent, mostPopular, mostPopularCritic
-            },
+            }, */
             carouselIndex: 0
         };
     }
@@ -54,8 +54,9 @@ export class Home extends Component {
     /** these functions will be actions */
     onGenresSelected(genres) {
         const genresIds = genres.map(genre => this.props.genresMap[genre]);
-        const newQuery = Object.assign({}, this.state.query, { selectedGenres: genresIds });        
-        this.setState({ query:  newQuery });
+        //const newQuery = Object.assign({}, this.state.query, { selectedGenres: genresIds });
+        //this.setState({ query:  newQuery });
+        this.props.actions.setSelectedGenres(genresIds)
     }
 
     onTypeSelection(selectedType) {
@@ -64,18 +65,20 @@ export class Home extends Component {
     }
 
     onYearsSelected(selectedYearsRange) {
-        const newQuery = Object.assign({}, this.state.query, { selectedYearsRange });
-        this.setState({ query: newQuery });
+        //const newQuery = Object.assign({}, this.state.query, { selectedYearsRange });
+        //this.setState({ query: newQuery });
+        this.props.actions.setYearsRange(selectedYearsRange)
     }
 
     onDurationSelected(selectedDurationRange) {
-        const newQuery = Object.assign({}, this.state.query, { selectedDurationRange });
-        this.setState({ query: newQuery });
+        //const newQuery = Object.assign({}, this.state.query, { selectedDurationRange });
+        //this.setState({ query: newQuery });
+        this.props.actions.setDurationRange(selectedDurationRange);
     }
 
     getMovies() {
         const { navigator } = this.props;
-        this.props.actions.getMovies(this.state.query);
+        this.props.actions.getMovies();
         navigator.pushPage({ 
                 component: MovieList,
                 key: 'MOVIES_PAGE',
