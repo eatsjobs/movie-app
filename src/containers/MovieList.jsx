@@ -31,8 +31,7 @@ export class MovieList extends Component {
     handleChange(e) {
         this.setState({ index: e.activeIndex }, () => {
             console.log(this.props.currentPage);
-            if((this.state.index + 2) % 20 === 0) { 
-                
+            if((this.state.index + 2) % 20 === 0) {
                 this.props.actions.getMovies(this.props.currentPage + 1);
             }
         });
@@ -42,7 +41,11 @@ export class MovieList extends Component {
         return (<Toolbar>
             <div className='left'>
                 {this.props.hasBackButton ? 
-                    <BackButton onClick={() => this.props.navigator.popPage()}>Back</BackButton> : null
+                    <BackButton onClick={() => { 
+                            this.props.actions.resetMovies();
+                            this.props.navigator.popPage();
+                        }
+                    }>Back</BackButton> : null
                 }
             </div>
             <div className='center'>Your Movies!</div>

@@ -4,6 +4,7 @@ import {
     SET_DURATION_RANGE,
     SET_YEARS_RANGE,
     SET_SELECTED_GENRES,
+    RESET_MOVIES,
 } from '../actions';
 
 const initialState = {
@@ -42,6 +43,8 @@ export default function app(state = initialState, action) {
                 totalPages: action.payload.total_pages, 
                 totalResults: action.payload.total_results 
             });
+        case RESET_MOVIES:
+            return Object.assign({}, state, { page: 1, totalPages: 0, totalResults: 0, movies: [] });
         default:
             return state;
     }

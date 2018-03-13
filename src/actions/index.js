@@ -10,6 +10,8 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const GET_MOVIES_SUCCESS = 'GET_MOVIES_SUCCESS';
 export const GET_MOVIES_ERROR = 'GET_MOVIES_ERROR';
 
+export const RESET_MOVIES = 'RESET_MOVIES';
+
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 export const SET_YEARS_RANGE = 'SET_YEARS_RANGE';
 export const SET_SELECTED_GENRES = 'SET_SELECTED_GENRES';
@@ -79,6 +81,12 @@ export function getMovies(page) {
             .catch(reason => {
                 dispatch({ type: GET_MOVIES_ERROR, payload: reason.toString() });
             });
+    }
+}
+
+export function resetMovies() {
+    return {
+        type: RESET_MOVIES
     }
 }
 
