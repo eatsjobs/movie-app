@@ -34,8 +34,8 @@ self.addEventListener('push', (event) => {
 
 workbox.precache([
   {
-    "url": "/movie-app/app.2161f.bundle.js",
-    "revision": "11b869d4bf97d37367c99ba6b6ba068b"
+    "url": "/movie-app/app.3015f.bundle.js",
+    "revision": "69790d4a8195d1f60b334677a2cd2105"
   },
   {
     "url": "/movie-app/assets/fontawesome-webfont.eot",
@@ -115,11 +115,11 @@ workbox.precache([
   },
   {
     "url": "/movie-app/index.html",
-    "revision": "aa6b7ceff8fcf96991c96c7708983282"
+    "revision": "cf2594e5346bf9deee738f334a065141"
   },
   {
-    "url": "/movie-app/vendor.2161f.bundle.js",
-    "revision": "9225e0ce5c4455532bb06221710b35a6"
+    "url": "/movie-app/vendor.3015f.bundle.js",
+    "revision": "0b6a9bb736f8455ff17c92752e55325d"
   },
   {
     "url": "/movie-app/workbox-sw.prod.v2.1.2.js",
