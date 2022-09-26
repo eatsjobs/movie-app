@@ -18,7 +18,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "code-push": "^2.0.1-beta",
+    "code-push": "^4.0.5",
     "cordova-android": "^6.3.0",
     "cordova-ios": "^4.5.3",
     "cordova-plugin-code-push": "^1.10.0-beta",
